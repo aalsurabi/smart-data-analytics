@@ -190,8 +190,6 @@ if __name__ == "__main__":
 
         # Calculate similarity scores
         img_id_list, img_similarity_list = calculate_screenshot_similarities(screenshots_dir, "screenshot")
-        print(img_id_list)
-        print(img_similarity_list)
         # Create a dictionary to map IDs to similarities
         similarity_dict = dict(zip(img_id_list, img_similarity_list))
         # Add a new column 'similarity' with NaN
