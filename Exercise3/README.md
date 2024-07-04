@@ -18,7 +18,7 @@ Test with `http://localhost:8080/cadenza` in web browser if Cadenza Web Server h
 
 Execute `evaluation.py` inside  "Exercise3/data/" directory with directory path of generated scripts `generated_scripts/<subfolder_name>` (no "/" at the end!)
 ```
-python evaluate.py ./generated_scripts/few_shot/
+python evaluate.py ./generated_scripts/few_shot
 ```
 
 Result .csv file is saved in  `evaluation_results/few_shot/`.
