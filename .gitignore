@@ -1,1 +1,11 @@
-Exercice3/data/
+Exercice3/data/evaluation_results/*
+Exercise3/data/generated_html/*
+Exercise3/data/generated_screenshots/*
+Exercise3/data/generated_scripts/*
+Exercise3/data/html/*
+Exercise3/data/modified_scripts/*
+Exercise3/data/screenshot/*
+Excercise3/data/test_script/*
+Exercise3/data/test-results/*
+Exercise3/data/playwright-script.db
+
