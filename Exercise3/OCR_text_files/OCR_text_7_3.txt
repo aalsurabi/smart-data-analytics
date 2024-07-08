@@ -1,0 +1,70 @@
+disy Caden:
+
+Messstellen-Monitoring [25] | Informationen zur Arbeitsmappe ~
+
+Gewassergiite
+
+Messstellen-Monitoring
+
+Die Qualitat von FlieBgewassern und stehenden Gewassern wird in Niedersachsen regelmaiBig untersucht und
+iiberwacht. Hierzu betreibt der Niederséichsische Landesbetrieb fiir Wasserwirtschaft, Kiisten- und Naturschutz
+(NLWEN) ein Messnetz, welches Daten zur Qualitatsanalyse erfasst. Die Arbeitsmappe nutzt zu
+Demonstrationszwecken einen Datenausschnitt zum Themenbereich FlieRgewéissergiite Chemie, welcher
+freundlicherweise vorn NLWKN zu Verfiigung gestellt wurde. Weitere Informationen finden Sie her
+\Niedersiichsischer Landesbetrieb fiir Wasserwirtschaft, Kiisten- und Naturschutz (NLWKN) |
+
+Informationen zur Arbeitsmappe
+In dieser Arbeitsmappe sehen Sie Auswertungen zu einzelnen Messstellen. Das bedeutet, eine Messstelle muss
+immer ausgewahit sein. Analysiert wird nach Parameter und Gewasser tiber die Zeit. Dies geschieht gemaB einer
+Unterteilung der Parameter in Probeparameter, welche die Rahmenbedingungen eines Gewassers erfassen und
+‘Messparameter. Minimum, Mittelwert und Maximum der Messwerte stehen bei dieser Analyse im Fokus.
+
+Enthaltene Arbeitsblaitter:
+
+1. Informationen zur Arbeitsm:
+telwert der Parameter der Gewasserproben
+
+3. Maximalwert der Parameter der Gewiisserproben
+
+4 Jahresvergleich der Parameter der Gewasserproben
+telwert der Messparameter
+
+6. Maximalwert der Messparameter
+
+‘.Jahresvergleich der Messparameter
+
+Informationen zu den Parametern:
+Die Daten enthalten Informationen zur FlieSgewiissergiite an Messstellen entlang von Gewassern. Folgende
+
+>
+
+‘< Zugriffseinstellungen E}NeueSicht i Mehr ER &
+Sicht fir Daten
+EBB Tabelle (gruppiert)
+
+(OD Leere Karte
+
+OD karte
+
+wl Sdulendiagramm
+
+Statische Sicht
+
+T ret
+eit
+
+Kartensicht aus Repository
+
+>
+
+Hinweise zu den Daten und
+deren Nutzung
+
+Alle Daten wurden vom
+NLWEN erhoben und
+freundlicherweise 2u
+Demozwecken bereitgestelit.
+‘Das NLWKN iibernimmt dabei —_—
+keine Gewahr fiir die NLWKN
+Richtigkeit der Daten. Beiden ©
+

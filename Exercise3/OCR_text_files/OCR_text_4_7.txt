@@ -1,0 +1,16 @@
+ARBEITSMAPPE VERWALTEN
+
+Q Ubersicht Messstellen*
+
+® ED informationen zur Arbeitsmappe
+
+© HMessstellenliste
+
+© HMessstellenkarte
+
+® EB daufigkeit der Messungen
+
+® [BlasperReport: Druckbericht zur Anzahl der Messstellen
+
+© Brest
+

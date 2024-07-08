@@ -1,0 +1,15 @@
+‘ARBEITSMAPPE IMPORTIEREN
+Datei
+Bitte wahlen Sie eine Datei aus. Testmappe_Lades
+Repository
+@Automobile
+Verzeichnis im Navigator *
+
+[oStammverzeichnis
+
+Name der Arbeitsmappe *
+
+TestRename
+
+Schlagwérter
+

@@ -1,0 +1,28 @@
+18 ARBEITSBLATT ALS BERICHT EXPORTIEREN
+Arbeitsblatt
+B ellenkarte
+
+Berichtslayout
+
+[Demo-Layout (Hochformat)
+
+Im Bericht anzeigen
+| Titel des
+
+| Titel der Sichten
+
+Darstellung der Filter im Bericht
+
+Keine Filter
+
+Liste der Filter nach jeder Sicht. Analysekontext der Arbeitsmappe und der Sicht werden
+mmengefiihrt und im B
+
+ird im
+
+© Information zur Darstellung
+
+Fiir die Darstellune.der-Karte wird-deralduelle MaRstab der Kartensicht iibernommen.
+
+Bericht exportieren MU
+

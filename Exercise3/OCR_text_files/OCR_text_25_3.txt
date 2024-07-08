@@ -1,0 +1,17 @@
+ARBEITSMAPPE IMPORTIEREN
+Datei *
+
+Bitte wahlen Sie eine Datei aus. Test mappe_Ladesaeulen.zip
+
+Repository
+@Automobile
+Verzeichnis im Navigator *
+
+DStammverzeichnis
+
+Name der Arbeitsmappe *
+
+Testmappe_Ladesaeulen
+
+Schlagwérter
+

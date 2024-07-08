@@ -1,0 +1,37 @@
+ disy Cadenza
+
+Neue Arbeitsmappe [Ungespeichert Blatt v
+
+Ziehen Sie ein Attribut aus dem Datenmanager auf das
+Arbeitsblatt.
+
+- ODER —
+
+‘Wahlen Sie direkt den Visualisierungstyp fiir hre Daten. Der
+Visualisierungstyp kann nachtraglich geaindert werden.
+
+FB Tabelle (gruppiert)
+OO Karte
+
+wl Sdulendiagramm
+
+Bl
+
+QQ @)Speichern unter... FNeueSicht } Mehr
+
+> DESIGNER
+
+x
+
+& DATENMANAGER
+
+Q Ad
+8
+x
+
+@ Bitte wahlen Sie eine Sicht aus
+
+@ Keine Daten
+
+++ Daten hinzut
+

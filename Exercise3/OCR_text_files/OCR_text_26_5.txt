@@ -1,0 +1,15 @@
+18 SICHT ALS BERICHT EXPORTIEREN
+
+Berichtslayout
+[1 Demo-Layout (H
+
+Im Bericht anzeigen
+| Titel der Sicht
+| Filter fir diese Sicht
+
+© Information zur Darstellung
+
+Tabellenspalten, die nicht mehr auf die Seite passen, werden abgeschnitten.
+
+Bericht exportieren EUs
+

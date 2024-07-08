@@ -1,0 +1,17 @@
+ARBEITSMAPPE IMPORTIEREN
+Datei *
+
+Bitte wahlen Sie eine Datei aus. Bitt=
+
+Repository
+
+@Automobile
+
+Verzeichnis im Navigator *
+
+DStammverzeichnis
+
+Name der Arbeitsmappe *
+
+Schlagwérter
+
