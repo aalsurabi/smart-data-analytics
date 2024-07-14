@@ -182,7 +182,7 @@ def create_and_save_dataframe(executable_ids, executables, screenshot_ids, scree
     screenshot_df = pd.DataFrame(list(screenshot_dict.items()), columns=['id', 'screenshot_similarities'])
 
     # Merge the DataFrames on the 'id' column
-    merged_df = pd.merge(exe_df, screenshot_df, on='id')
+    merged_df = pd.merge(exe_df, screenshot_df, on='id', how='outer')
 
     # Save evaluation results
     evaluation_dir = "evaluation_results"
