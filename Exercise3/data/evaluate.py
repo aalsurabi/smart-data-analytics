@@ -7,12 +7,23 @@ import json
 import argparse
 from pixelmatch.contrib.PIL import pixelmatch
 import time
+from bs4 import BeautifulSoup
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
+import nltk
+
+
+# Download required NLTK data
+nltk.download('punkt')
 
 def get_id_from_file_name(file_name):
     if file_name.endswith(".ts"):
         pattern = r'^(.*?)\.spec\.ts$'
     elif file_name.endswith(".png"):
         pattern = r'^(.*?)\.png$'
+    elif file_name.endswith(".html"):
+        pattern = r'^(.*?)\.html$'
     else:
         pattern = ""
     match = re.match(pattern, file_name)
@@ -174,19 +185,81 @@ def calculate_screenshot_similarities(generated_screenshot_dir, original_screens
     return id_list, similarity_list
 
 
-def create_and_save_dataframe(executable_ids, executables, screenshot_ids, screenshot_similarities):
+def extract_text_from_html(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        soup = BeautifulSoup(file, 'html.parser')
+        return soup.get_text()
+
+def compare_html_files(html_file1, html_file2):
+
+# Extract text content from HTML files
+    text1 = extract_text_from_html(html_file1)
+    text2 = extract_text_from_html(html_file2)
+
+    # Create a TF-IDF Vectorizer
+    vectorizer = TfidfVectorizer()
+
+    # Vectorize the text content
+    tfidf_matrix = vectorizer.fit_transform([text1, text2])
+
+    # Calculate cosine similarity
+    similarity_score = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])
+    cosine_sim = similarity_score[0][0]
+
+    # Tokenize the text for BLEU score
+    reference = nltk.word_tokenize(text1)
+    candidate = nltk.word_tokenize(text2)
+    
+    # Calculate BLEU score
+    smoothie = SmoothingFunction().method4
+    bleu_score = sentence_bleu([reference], candidate, smoothing_function=smoothie)
+
+    return cosine_sim, bleu_score
+
+
+def calculate_html_similarities(generated_html_dir, original_html_dir ):
+    print("Calculating html similarities...")
+    id_list = []
+    total_time = 0
+    cosine_similarity_list = []
+    bleu_score_list = []
+    for root, _, files in os.walk(generated_html_dir):
+        for file_name in files:
+            if not file_name.endswith(".html"):
+                print(f"Error, {file_name} doesn't end with .html")
+            else:
+                start_time = time.time()
+                cosine_sim, bleu_score = compare_html_files(f"{generated_html_dir}/{file_name}", f"{original_html_dir}/{file_name}")
+                end_time = time.time()
+                execution_time = end_time - start_time
+                total_time += execution_time
+                print(f"Similarity {file_name} to original html file: cosine similarity: {cosine_sim}, bleu score {bleu_score} ({execution_time:.4f} seconds)")
+                id_list.append(get_id_from_file_name(file_name))
+                cosine_similarity_list.append(cosine_sim)
+                bleu_score_list.append(bleu_score)
+    print(f"Calculating html similarities finished in  {total_time:.4f} seconds")
+    return id_list, cosine_similarity_list, bleu_score_list
+
+def create_and_save_dataframe(executable_ids, executables, screenshot_ids, screenshot_similarities, html_ids, cosine_similarities, bleu_scores):
     exe_dict = dict(zip(executable_ids, executables))
     screenshot_dict = dict(zip(screenshot_ids, screenshot_similarities))
+    html_dict = {
+        'id': html_ids,
+        'html_cosine_similarity': cosine_similarities,
+        'html_bleu_score': bleu_scores
+    }
     # Convert dictionaries to DataFrames
     exe_df = pd.DataFrame(list(exe_dict.items()), columns=['id', 'executable'])
     screenshot_df = pd.DataFrame(list(screenshot_dict.items()), columns=['id', 'screenshot_similarities'])
-
+    html_df = pd.DataFrame(html_dict)
+   
     # Merge the DataFrames on the 'id' column
     merged_df = pd.merge(exe_df, screenshot_df, on='id', how='outer')
+    final_merged_df = pd.merge(merged_df, html_df, on='id', how='outer')
 
     # Save evaluation results
     evaluation_dir = "evaluation_results"
-    df = merged_df.sort_values(by='id', ascending=True)
+    df = final_merged_df.sort_values(by='id', ascending=True)
     if not os.path.exists(evaluation_dir):
         os.makedirs(evaluation_dir)
     csv_path = f"{evaluation_dir}/evaluation_{leaf_dir}.csv"
@@ -207,6 +280,7 @@ if __name__ == "__main__":
         leaf_dir = os.path.basename(script_dir)
         modified_scripts_dir = f"modified_scripts/{leaf_dir}"
         screenshots_dir = f"generated_screenshots/{leaf_dir}"
+        html_dir = f"generated_html/{leaf_dir}"
         # Test executability
         error_id_list = modify_scripts(script_dir, modified_scripts_dir, screenshots_dir, f"generated_html/{leaf_dir}")
         test_result_file = f"test_results.json" # defined in playwright.config.ts
@@ -233,12 +307,15 @@ if __name__ == "__main__":
                         print("Error executing test")
                         print(f"Return code: {e.returncode}")
                         print(f"Command: {e.cmd}")
-
         else:
             # Screenshot Similarities
             original_screenshots_dir = "generated_screenshots/test_script" 
             if not os.path.isdir(original_screenshots_dir):
                 raise RuntimeError(f"Error: {original_screenshots_dir} is not a valid directory. Generate test_script screenshots first with the command:  python evaluate.py ./test_script --no-evaluate ")
-            img_id_list, img_similarity_list = calculate_screenshot_similarities(screenshots_dir, "screenshot")
+            img_id_list, img_similarity_list = calculate_screenshot_similarities(screenshots_dir, original_screenshots_dir)
 
-            create_and_save_dataframe(concatenated_id_list, concatenated_executable_list, img_id_list, img_similarity_list)
+            # HTML similarities
+            original_html_dir = "generated_html/test_script" 
+            html_id_list, cosine_similarity_list, bleu_score_list = calculate_html_similarities(html_dir, original_html_dir)
+
+            create_and_save_dataframe(concatenated_id_list, concatenated_executable_list, img_id_list, img_similarity_list, html_id_list, cosine_similarity_list, bleu_score_list)
